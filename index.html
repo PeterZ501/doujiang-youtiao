@@ -5,11 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>豆浆油条 · 每日A股早报</title>
 <style>
-  /* ========== 基础重置与变量 ========== */
   :root {
     --c-up: #e74c3c;
     --c-down: #27ae60;
-    --c-flat: #95a5a6;
     --c-laoA: #2980b9;
     --c-xiaoYa: #c0407e;
     --c-bg: #f5f0e8;
@@ -24,72 +22,22 @@
     --font-mono: "SF Mono","Fira Code","Consolas",monospace;
   }
   *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: var(--font-sans);
-    background: var(--c-bg);
-    color: var(--c-text);
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-  }
+  body { font-family: var(--font-sans); background: var(--c-bg); color: var(--c-text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
 
-  /* ========== 头部 ========== */
-  .site-header {
-    background: linear-gradient(135deg, var(--c-header) 0%, var(--c-header-2) 100%);
-    color: #fff;
-    padding: 28px 20px 0;
-    position: relative;
-    overflow: hidden;
-  }
-  .site-header::after {
-    content: "";
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--c-accent), var(--c-xiaoYa), var(--c-laoA));
-  }
+  .site-header { background: linear-gradient(135deg, var(--c-header) 0%, var(--c-header-2) 100%); color: #fff; padding: 28px 20px 0; position: relative; overflow: hidden; }
+  .site-header::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--c-accent), var(--c-xiaoYa), var(--c-laoA)); }
   .header-inner { max-width: 900px; margin: 0 auto; }
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 6px;
-  }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
   .brand-icon { font-size: 2.2em; line-height: 1; }
-  .brand-title {
-    font-size: 2em;
-    font-weight: 800;
-    letter-spacing: 2px;
-  }
-  .brand-sub {
-    font-size: 0.85em;
-    color: rgba(255,255,255,0.6);
-    margin-left: 4px;
-  }
-  .episode-info {
-    font-size: 0.92em;
-    color: rgba(255,255,255,0.75);
-    margin-bottom: 18px;
-  }
+  .brand-title { font-size: 2em; font-weight: 800; letter-spacing: 2px; }
+  .brand-sub { font-size: 0.85em; color: rgba(255,255,255,0.6); margin-left: 4px; }
+  .episode-info { font-size: 0.92em; color: rgba(255,255,255,0.75); margin-bottom: 18px; }
   .episode-info .sep { margin: 0 8px; opacity: 0.4; }
 
-  /* ========== 市场速览条 ========== */
-  .market-bar {
-    display: flex;
-    gap: 0;
-    overflow-x: auto;
-    padding-bottom: 18px;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255,255,255,0.2) transparent;
-  }
+  .market-bar { display: flex; gap: 0; overflow-x: auto; padding-bottom: 18px; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) transparent; }
   .market-bar::-webkit-scrollbar { height: 4px; }
   .market-bar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
-  .market-item {
-    flex: 1 0 auto;
-    min-width: 120px;
-    padding: 8px 14px;
-    border-right: 1px solid rgba(255,255,255,0.08);
-    text-align: center;
-  }
+  .market-item { flex: 1 0 auto; min-width: 120px; padding: 8px 14px; border-right: 1px solid rgba(255,255,255,0.08); text-align: center; }
   .market-item:last-child { border-right: none; }
   .market-item .m-name { font-size: 0.78em; color: rgba(255,255,255,0.55); margin-bottom: 2px; }
   .market-item .m-val { font-family: var(--font-mono); font-size: 1.05em; font-weight: 600; }
@@ -97,394 +45,105 @@
   .m-up { color: #ff6b6b; }
   .m-down { color: #51cf66; }
 
-  /* ========== 主容器 ========== */
   .container { max-width: 900px; margin: 0 auto; padding: 24px 20px 60px; }
 
-  /* ========== 选集播放器 ========== */
-  .archive-bar {
-    background: var(--c-card);
-    border-radius: 12px;
-    padding: 14px 18px;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  }
-  .archive-label {
-    font-size: 0.82em;
-    color: var(--c-text-light);
-    white-space: nowrap;
-    font-weight: 600;
-  }
-  .archive-list {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    scrollbar-width: thin;
-    padding: 2px;
-  }
+  .archive-bar { background: var(--c-card); border-radius: 12px; padding: 14px 18px; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .archive-label { font-size: 0.82em; color: var(--c-text-light); white-space: nowrap; font-weight: 600; }
+  .archive-list { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: thin; padding: 2px; }
   .archive-list::-webkit-scrollbar { height: 4px; }
   .archive-list::-webkit-scrollbar-thumb { background: var(--c-border); border-radius: 2px; }
-  .archive-chip {
-    flex: 0 0 auto;
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 1.5px solid var(--c-border);
-    background: transparent;
-    cursor: pointer;
-    font-size: 0.82em;
-    color: var(--c-text);
-    transition: all 0.2s;
-    white-space: nowrap;
-    font-family: var(--font-sans);
-  }
+  .archive-chip { flex: 0 0 auto; padding: 6px 14px; border-radius: 20px; border: 1.5px solid var(--c-border); background: transparent; cursor: pointer; font-size: 0.82em; color: var(--c-text); transition: all 0.2s; white-space: nowrap; font-family: var(--font-sans); }
   .archive-chip:hover { border-color: var(--c-accent); color: var(--c-accent); }
-  .archive-chip.active {
-    background: var(--c-header);
-    color: #fff;
-    border-color: var(--c-header);
-    font-weight: 600;
-  }
+  .archive-chip.active { background: var(--c-header); color: #fff; border-color: var(--c-header); font-weight: 600; }
 
-  /* ========== 内容卡片 ========== */
-  .card {
-    background: var(--c-card);
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  }
-  .card-title {
-    font-size: 1.15em;
-    font-weight: 700;
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  .card { background: var(--c-card); border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .card-title { font-size: 1.15em; font-weight: 700; margin-bottom: 14px; }
 
-  /* ========== 板块涨跌 ========== */
-  .sector-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  .sector-col h4 {
-    font-size: 0.88em;
-    color: var(--c-text-light);
-    margin-bottom: 8px;
-    padding-bottom: 6px;
-    border-bottom: 2px solid var(--c-border);
-  }
+  .sector-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .sector-col h4 { font-size: 0.88em; color: var(--c-text-light); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 2px solid var(--c-border); }
   .sector-col.gainers h4 { border-color: var(--c-up); }
   .sector-col.losers h4 { border-color: var(--c-down); }
-  .sector-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px 0;
-    font-size: 0.92em;
-    border-bottom: 1px dashed var(--c-border);
-  }
+  .sector-item { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 0.92em; border-bottom: 1px dashed var(--c-border); }
   .sector-item:last-child { border-bottom: none; }
   .sector-chg { font-family: var(--font-mono); font-weight: 600; }
   .chg-up { color: var(--c-up); }
   .chg-down { color: var(--c-down); }
 
-  /* ========== 新闻要闻 ========== */
   .news-list { display: flex; flex-direction: column; gap: 12px; }
-  .news-item {
-    display: flex;
-    gap: 12px;
-    padding: 12px 14px;
-    border-radius: 8px;
-    background: #faf8f5;
-    border-left: 3px solid var(--c-accent);
-  }
-  .news-tag {
-    flex: 0 0 auto;
-    padding: 2px 10px;
-    border-radius: 4px;
-    font-size: 0.75em;
-    font-weight: 600;
-    height: fit-content;
-    white-space: nowrap;
-  }
+  .news-item { display: flex; gap: 12px; padding: 12px 14px; border-radius: 8px; background: #faf8f5; border-left: 3px solid var(--c-accent); }
+  .news-tag { flex: 0 0 auto; padding: 2px 10px; border-radius: 4px; font-size: 0.75em; font-weight: 600; height: fit-content; white-space: nowrap; }
   .news-tag.domestic { background: #e8f0fe; color: #1967d2; }
   .news-tag.international { background: #fef3e8; color: #b06000; }
   .news-content h4 { font-size: 0.95em; margin-bottom: 4px; }
   .news-content p { font-size: 0.85em; color: var(--c-text-light); }
 
-  /* ========== 对话播报区 ========== */
   .dialog-section { padding: 0; overflow: hidden; }
-  .dialog-header {
-    text-align: center;
-    padding: 20px 24px 16px;
-    border-bottom: 1px solid var(--c-border);
-    background: linear-gradient(180deg, #faf8f5 0%, transparent 100%);
-  }
+  .dialog-header { text-align: center; padding: 20px 24px 16px; border-bottom: 1px solid var(--c-border); background: linear-gradient(180deg, #faf8f5 0%, transparent 100%); }
   .dialog-header h2 { font-size: 1.2em; line-height: 1.5; }
-  .dialog-header .tagline {
-    font-size: 0.85em;
-    color: var(--c-text-light);
-    margin-top: 6px;
-  }
-  .dialog-body {
-    padding: 24px;
-    max-height: 600px;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: var(--c-border) transparent;
-  }
+  .dialog-header .tagline { font-size: 0.85em; color: var(--c-text-light); margin-top: 6px; }
+  .dialog-body { padding: 24px; max-height: 600px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--c-border) transparent; }
   .dialog-body::-webkit-scrollbar { width: 5px; }
   .dialog-body::-webkit-scrollbar-thumb { background: var(--c-border); border-radius: 3px; }
-
-  .msg {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 18px;
-    animation: fadeInUp 0.3s ease;
-  }
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  .msg { display: flex; gap: 10px; margin-bottom: 18px; animation: fadeInUp 0.3s ease; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
   .msg.laoA { flex-direction: row; }
   .msg.xiaoYa { flex-direction: row-reverse; }
-
-  .avatar {
-    flex: 0 0 auto;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.9em;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: -0.5px;
-  }
+  .avatar { flex: 0 0 auto; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9em; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
   .avatar.laoA { background: var(--c-laoA); }
   .avatar.xiaoYa { background: var(--c-xiaoYa); }
-
-  .bubble-wrap {
-    max-width: 72%;
-    display: flex;
-    flex-direction: column;
-  }
+  .bubble-wrap { max-width: 72%; display: flex; flex-direction: column; }
   .msg.xiaoYa .bubble-wrap { align-items: flex-end; }
-  .speaker-name {
-    font-size: 0.74em;
-    color: var(--c-text-light);
-    margin-bottom: 3px;
-    padding: 0 4px;
-  }
-  .bubble {
-    padding: 12px 16px;
-    border-radius: 16px;
-    font-size: 0.93em;
-    line-height: 1.65;
-    position: relative;
-    word-wrap: break-word;
-    transition: box-shadow 0.3s;
-  }
-  .msg.laoA .bubble {
-    background: #e8f1f8;
-    border-top-left-radius: 4px;
-  }
-  .msg.xiaoYa .bubble {
-    background: #fce4ee;
-    border-top-right-radius: 4px;
-  }
-  .msg.speaking .bubble {
-    box-shadow: 0 0 0 2px var(--c-accent);
-  }
+  .speaker-name { font-size: 0.74em; color: var(--c-text-light); margin-bottom: 3px; padding: 0 4px; }
+  .bubble { padding: 12px 16px; border-radius: 16px; font-size: 0.93em; line-height: 1.65; word-wrap: break-word; transition: box-shadow 0.3s; }
+  .msg.laoA .bubble { background: #e8f1f8; border-top-left-radius: 4px; }
+  .msg.xiaoYa .bubble { background: #fce4ee; border-top-right-radius: 4px; }
+  .msg.speaking .bubble { box-shadow: 0 0 0 2px var(--c-accent); }
 
-  /* ========== 播放控制 ========== */
-  .play-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 20px;
-    border-top: 1px solid var(--c-border);
-    background: #faf8f5;
-    flex-wrap: wrap;
-  }
-  .ctrl-btn {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1em;
-    transition: transform 0.15s, background 0.2s;
-    flex: 0 0 auto;
-  }
+  .play-controls { display: flex; align-items: center; gap: 10px; padding: 14px 20px; border-top: 1px solid var(--c-border); background: #faf8f5; flex-wrap: wrap; }
+  .ctrl-btn { width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1em; transition: transform 0.15s, background 0.2s; flex: 0 0 auto; }
   .ctrl-btn:hover { transform: scale(1.08); }
   .ctrl-btn:active { transform: scale(0.95); }
-  .play-btn {
-    background: var(--c-header);
-    color: #fff;
-    width: 42px;
-    height: 42px;
-    font-size: 1.1em;
-  }
-  .settings-btn {
-    background: transparent;
-    color: var(--c-text-light);
-    border: 1.5px solid var(--c-border);
-    font-size: 1.1em;
-  }
+  .play-btn { background: var(--c-header); color: #fff; width: 42px; height: 42px; font-size: 1.1em; }
+  .settings-btn { background: transparent; color: var(--c-text-light); border: 1.5px solid var(--c-border); font-size: 1.1em; }
   .settings-btn:hover { color: var(--c-accent); border-color: var(--c-accent); }
   .settings-btn.active { color: var(--c-accent); border-color: var(--c-accent); background: #fff5eb; }
+  .play-progress { flex: 1; min-width: 80px; height: 4px; background: var(--c-border); border-radius: 2px; overflow: hidden; }
+  .play-progress-fill { height: 100%; width: 0%; background: var(--c-accent); transition: width 0.4s ease; }
+  .play-status { font-size: 0.78em; color: var(--c-text-light); white-space: nowrap; }
 
-  .play-progress {
-    flex: 1;
-    min-width: 80px;
-    height: 4px;
-    background: var(--c-border);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .play-progress-fill {
-    height: 100%;
-    width: 0%;
-    background: var(--c-accent);
-    transition: width 0.4s ease;
-  }
-  .play-status {
-    font-size: 0.78em;
-    color: var(--c-text-light);
-    white-space: nowrap;
-  }
-
-  /* ========== 语音设置面板 ========== */
-  .voice-settings {
-    display: none;
-    padding: 18px 20px;
-    border-top: 1px solid var(--c-border);
-    background: #fdfcfa;
-  }
+  .voice-settings { display: none; padding: 18px 20px; border-top: 1px solid var(--c-border); background: #fdfcfa; }
   .voice-settings.open { display: block; }
-  .voice-settings h4 {
-    font-size: 0.85em;
-    color: var(--c-text-light);
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
-  .voice-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-  }
-  .voice-row label {
-    font-size: 0.82em;
-    color: var(--c-text);
-    min-width: 50px;
-    font-weight: 500;
-  }
-  .voice-row select {
-    flex: 1;
-    min-width: 140px;
-    padding: 6px 10px;
-    border: 1.5px solid var(--c-border);
-    border-radius: 6px;
-    background: #fff;
-    font-size: 0.82em;
-    font-family: var(--font-sans);
-    color: var(--c-text);
-    cursor: pointer;
-    outline: none;
-    transition: border-color 0.2s;
-  }
+  .voice-settings h4 { font-size: 0.85em; color: var(--c-text-light); margin-bottom: 10px; font-weight: 600; }
+  .voice-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+  .voice-row label { font-size: 0.82em; color: var(--c-text); min-width: 50px; font-weight: 500; }
+  .voice-row select { flex: 1; min-width: 140px; padding: 6px 10px; border: 1.5px solid var(--c-border); border-radius: 6px; background: #fff; font-size: 0.82em; font-family: var(--font-sans); color: var(--c-text); cursor: pointer; outline: none; transition: border-color 0.2s; }
   .voice-row select:focus { border-color: var(--c-accent); }
-  .test-btn {
-    padding: 5px 14px;
-    border-radius: 16px;
-    border: 1.5px solid var(--c-border);
-    background: #fff;
-    font-size: 0.78em;
-    cursor: pointer;
-    font-family: var(--font-sans);
-    color: var(--c-text);
-    white-space: nowrap;
-    transition: all 0.2s;
-  }
+  .test-btn { padding: 5px 14px; border-radius: 16px; border: 1.5px solid var(--c-border); background: #fff; font-size: 0.78em; cursor: pointer; font-family: var(--font-sans); color: var(--c-text); white-space: nowrap; transition: all 0.2s; }
   .test-btn:hover { border-color: var(--c-accent); color: var(--c-accent); }
+  .test-btn:disabled { opacity: 0.5; cursor: wait; }
+  .slider-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .slider-row label { font-size: 0.82em; color: var(--c-text); min-width: 50px; font-weight: 500; }
+  .slider-row input[type="range"] { flex: 1; -webkit-appearance: none; appearance: none; height: 4px; border-radius: 2px; background: var(--c-border); outline: none; }
+  .slider-row input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--c-accent); cursor: pointer; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+  .slider-row input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--c-accent); cursor: pointer; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+  .slider-val { font-size: 0.78em; color: var(--c-text-light); min-width: 32px; text-align: right; font-family: var(--font-mono); }
 
-  .slider-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
-  }
-  .slider-row label {
-    font-size: 0.82em;
-    color: var(--c-text);
-    min-width: 50px;
-    font-weight: 500;
-  }
-  .slider-row input[type="range"] {
-    flex: 1;
-    -webkit-appearance: none;
-    appearance: none;
-    height: 4px;
-    border-radius: 2px;
-    background: var(--c-border);
-    outline: none;
-  }
-  .slider-row input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--c-accent);
-    cursor: pointer;
-    border: 2px solid #fff;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-  }
-  .slider-row input[type="range"]::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--c-accent);
-    cursor: pointer;
-    border: 2px solid #fff;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-  }
-  .slider-val {
-    font-size: 0.78em;
-    color: var(--c-text-light);
-    min-width: 32px;
-    text-align: right;
-    font-family: var(--font-mono);
-  }
-  .voice-hint {
-    font-size: 0.75em;
-    color: var(--c-text-light);
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 1px dashed var(--c-border);
-    line-height: 1.5;
-  }
+  .engine-tabs { display: flex; gap: 0; margin-bottom: 12px; border-radius: 8px; overflow: hidden; border: 1.5px solid var(--c-border); }
+  .engine-tab { flex: 1; padding: 8px 12px; border: none; background: transparent; cursor: pointer; font-size: 0.82em; font-family: var(--font-sans); color: var(--c-text-light); transition: all 0.2s; text-align: center; }
+  .engine-tab.active { background: var(--c-header); color: #fff; font-weight: 600; }
+
+  .proxy-row { margin-bottom: 10px; padding: 10px; background: #f8f6f3; border-radius: 8px; border: 1px dashed var(--c-border); }
+  .proxy-row label { display: block; font-size: 0.78em; color: var(--c-text-light); margin-bottom: 4px; }
+  .proxy-row input { width: 100%; padding: 6px 10px; border: 1.5px solid var(--c-border); border-radius: 6px; font-size: 0.82em; font-family: var(--font-mono); outline: none; }
+  .proxy-row input:focus { border-color: var(--c-accent); }
+  .proxy-hint { font-size: 0.72em; color: var(--c-text-light); margin-top: 4px; line-height: 1.5; }
+  .proxy-hint a { color: var(--c-accent); }
+
+  .voice-hint { font-size: 0.75em; color: var(--c-text-light); margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--c-border); line-height: 1.5; }
   .voice-hint b { color: var(--c-accent); }
 
-  /* ========== 页脚 ========== */
-  .site-footer {
-    text-align: center;
-    padding: 30px 20px;
-    color: var(--c-text-light);
-    font-size: 0.82em;
-  }
+  .site-footer { text-align: center; padding: 30px 20px; color: var(--c-text-light); font-size: 0.82em; }
 
-  /* ========== 响应式 ========== */
   @media (max-width: 600px) {
     .brand-title { font-size: 1.5em; }
     .brand-sub { display: none; }
@@ -499,7 +158,6 @@
 </head>
 <body>
 
-<!-- ========== 头部 ========== -->
 <header class="site-header">
   <div class="header-inner">
     <div class="brand">
@@ -507,7 +165,7 @@
       <span class="brand-title">豆浆油条</span>
       <span class="brand-sub">每日A股早间播报</span>
     </div>
-    <div class="episode-info" id="episodeInfo">
+    <div class="episode-info">
       <span id="epDate">--</span>
       <span class="sep">|</span>
       <span id="epWeekday">--</span>
@@ -518,16 +176,13 @@
   </div>
 </header>
 
-<!-- ========== 主内容 ========== -->
 <div class="container">
 
-  <!-- 选集播放 -->
   <div class="archive-bar">
     <span class="archive-label">📜 选集</span>
     <div class="archive-list" id="archiveList"></div>
   </div>
 
-  <!-- 对话播报 -->
   <div class="card dialog-section" id="dialogCard">
     <div class="dialog-header">
       <h2 id="dialogTitle">--</h2>
@@ -535,7 +190,6 @@
     </div>
     <div class="dialog-body" id="dialogBody"></div>
 
-    <!-- 播放控制 -->
     <div class="play-controls">
       <button class="ctrl-btn play-btn" id="playBtn" title="播放/暂停">▶</button>
       <button class="ctrl-btn settings-btn" id="settingsBtn" title="语音设置">⚙</button>
@@ -543,20 +197,51 @@
       <span class="play-status" id="playStatus">点击播放语音播报</span>
     </div>
 
-    <!-- 语音设置面板 -->
     <div class="voice-settings" id="voiceSettings">
-      <h4>🎙 劳A的声音</h4>
-      <div class="voice-row">
-        <label>音色</label>
-        <select id="voiceMaleSelect"></select>
-        <button class="test-btn" id="testMaleBtn">试听</button>
+      <div class="engine-tabs">
+        <button class="engine-tab active" data-engine="edge" id="tabEdge">🎙 微软在线语音（20+种）</button>
+        <button class="engine-tab" data-engine="browser" id="tabBrowser">🔊 浏览器内置语音</button>
       </div>
 
-      <h4 style="margin-top:14px;">🎤 小雅的声音</h4>
-      <div class="voice-row">
-        <label>音色</label>
-        <select id="voiceFemaleSelect"></select>
-        <button class="test-btn" id="testFemaleBtn">试听</button>
+      <!-- 微软在线语音面板 -->
+      <div id="edgePanel">
+        <div class="proxy-row">
+          <label>TTS 代理地址（必填，用于跨域调用）</label>
+          <input type="text" id="proxyUrl" placeholder="https://your-worker.workers.dev" />
+          <div class="proxy-hint">
+            没有代理？<a href="https://github.com/PeterZ501/doujiang-youtiao/blob/main/worker/tts-proxy.js" target="_blank">点击查看部署教程</a>，免费部署到 Cloudflare Worker（1分钟）
+          </div>
+        </div>
+
+        <h4>🎙 劳A的声音</h4>
+        <div class="voice-row">
+          <label>音色</label>
+          <select id="edgeMaleSelect"></select>
+          <button class="test-btn" id="testEdgeMaleBtn">试听</button>
+        </div>
+
+        <h4 style="margin-top:14px;">🎤 小雅的声音</h4>
+        <div class="voice-row">
+          <label>音色</label>
+          <select id="edgeFemaleSelect"></select>
+          <button class="test-btn" id="testEdgeFemaleBtn">试听</button>
+        </div>
+      </div>
+
+      <!-- 浏览器内置语音面板 -->
+      <div id="browserPanel" style="display:none;">
+        <h4>🎙 劳A的声音</h4>
+        <div class="voice-row">
+          <label>音色</label>
+          <select id="voiceMaleSelect"></select>
+          <button class="test-btn" id="testMaleBtn">试听</button>
+        </div>
+        <h4 style="margin-top:14px;">🎤 小雅的声音</h4>
+        <div class="voice-row">
+          <label>音色</label>
+          <select id="voiceFemaleSelect"></select>
+          <button class="test-btn" id="testFemaleBtn">试听</button>
+        </div>
       </div>
 
       <h4 style="margin-top:14px;">🔊 通用设置</h4>
@@ -572,18 +257,18 @@
       </div>
 
       <div class="voice-hint">
-        💡 <b>提示</b>：Chrome/Edge 浏览器自带高质量中文语音（如晓晓、云扬、云希）。如果可选声音少，建议用 Chrome 打开。设置会自动保存。
+        💡 <b>微软在线语音</b>：20+种高质量中文神经语音（晓晓、云希、云扬等），自然度接近真人，需填代理地址。<br>
+        💡 <b>浏览器内置语音</b>：离线可用，声音取决于系统，Chrome/Edge 自带微软语音质量较好。<br>
+        💡 所有设置自动保存，手机和电脑各自独立。
       </div>
     </div>
   </div>
 
-  <!-- 板块涨跌 -->
   <div class="card">
     <div class="card-title">📊 板块涨跌速览</div>
     <div class="sector-grid" id="sectorGrid"></div>
   </div>
 
-  <!-- 新闻要闻 -->
   <div class="card">
     <div class="card-title">📰 今日要闻</div>
     <div class="news-list" id="newsList"></div>
@@ -599,414 +284,406 @@
 <script src="data/entries.js"></script>
 <script>
 (function() {
-  // ========== 状态 ==========
+  // 微软中文神经语音列表
+  var EDGE_VOICES = [
+    { name: 'zh-CN-XiaoxiaoNeural', label: '晓晓 (温柔)', gender: 'female' },
+    { name: 'zh-CN-XiaoyiNeural', label: '晓伊 (甜美)', gender: 'female' },
+    { name: 'zh-CN-XiaochenNeural', label: '晓辰 (知性)', gender: 'female' },
+    { name: 'zh-CN-XiaohanNeural', label: '晓涵 (优雅)', gender: 'female' },
+    { name: 'zh-CN-XiaomengNeural', label: '晓梦 (梦幻)', gender: 'female' },
+    { name: 'zh-CN-XiaomoNeural', label: '晓墨 (文艺)', gender: 'female' },
+    { name: 'zh-CN-XiaoqiuNeural', label: '晓秋 (成熟)', gender: 'female' },
+    { name: 'zh-CN-XiaoruiNeural', label: '晓睿 (智慧)', gender: 'female' },
+    { name: 'zh-CN-XiaoshuangNeural', label: '晓双 (活泼)', gender: 'female' },
+    { name: 'zh-CN-XiaoxuanNeural', label: '晓萱 (清新)', gender: 'female' },
+    { name: 'zh-CN-XiaoyanNeural', label: '晓颜 (柔美)', gender: 'female' },
+    { name: 'zh-CN-XiaoyouNeural', label: '晓悠 (悠扬)', gender: 'female' },
+    { name: 'zh-CN-XiaozhenNeural', label: '晓甄 (端庄)', gender: 'female' },
+    { name: 'zh-CN-YunxiNeural', label: '云希 (清朗)', gender: 'male' },
+    { name: 'zh-CN-YunyangNeural', label: '云扬 (阳光/新闻)', gender: 'male' },
+    { name: 'zh-CN-YunjianNeural', label: '云健 (稳重)', gender: 'male' },
+    { name: 'zh-CN-YunfengNeural', label: '云枫 (磁性)', gender: 'male' },
+    { name: 'zh-CN-YunhaoNeural', label: '云皓 (豪迈)', gender: 'male' },
+    { name: 'zh-CN-YunxiaNeural', label: '云夏 (热情)', gender: 'male' },
+    { name: 'zh-CN-YunyeNeural', label: '云野 (野性)', gender: 'male' },
+    { name: 'zh-CN-YunzeNeural', label: '云泽 (深沉)', gender: 'male' },
+    { name: 'zh-TW-HsiaoChenNeural', label: '晓臻 (台湾女)', gender: 'female' },
+    { name: 'zh-TW-YunJuiNeural', label: '云睿 (台湾男)', gender: 'male' }
+  ];
+
+  var STORAGE_KEY = 'doujiang_youtiao_voice_v2';
   var currentIdx = 0;
   var isPlaying = false;
   var isPaused = false;
   var playMsgIdx = 0;
-  var allVoices = [];
-  var selectedMaleVoice = null;
-  var selectedFemaleVoice = null;
+  var ttsEngine = 'edge';
+  var proxyUrl = '';
+  var edgeMaleVoice = 'zh-CN-YunyangNeural';
+  var edgeFemaleVoice = 'zh-CN-XiaoxiaoNeural';
+  var browserMaleVoice = null;
+  var browserFemaleVoice = null;
   var speechRate = 1.05;
   var speechPitch = 1.0;
+  var allBrowserVoices = [];
+  var currentAudio = null;
 
-  var STORAGE_KEY = 'doujiang_youtiao_voice_settings';
-
-  // ========== 工具函数 ==========
   function $(id) { return document.getElementById(id); }
 
-  // ========== 加载/保存设置 ==========
+  // ========== 持久化 ==========
   function loadSettings() {
     try {
       var s = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      if (s.ttsEngine) ttsEngine = s.ttsEngine;
+      if (s.proxyUrl) proxyUrl = s.proxyUrl;
+      if (s.edgeMaleVoice) edgeMaleVoice = s.edgeMaleVoice;
+      if (s.edgeFemaleVoice) edgeFemaleVoice = s.edgeFemaleVoice;
       if (s.rate) speechRate = parseFloat(s.rate);
       if (s.pitch) speechPitch = parseFloat(s.pitch);
-      if (s.maleName) selectedMaleVoice = s.maleName;
-      if (s.femaleName) selectedFemaleVoice = s.femaleName;
+      if (s.browserMaleVoice) browserMaleVoice = s.browserMaleVoice;
+      if (s.browserFemaleVoice) browserFemaleVoice = s.browserFemaleVoice;
     } catch(e) {}
   }
-
   function saveSettings() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
-        rate: speechRate,
-        pitch: speechPitch,
-        maleName: selectedMaleVoice ? selectedMaleVoice.name : null,
-        femaleName: selectedFemaleVoice ? selectedFemaleVoice.name : null
+        ttsEngine: ttsEngine, proxyUrl: proxyUrl,
+        edgeMaleVoice: edgeMaleVoice, edgeFemaleVoice: edgeFemaleVoice,
+        rate: speechRate, pitch: speechPitch,
+        browserMaleVoice: browserMaleVoice ? browserMaleVoice.name : null,
+        browserFemaleVoice: browserFemaleVoice ? browserFemaleVoice.name : null
       }));
     } catch(e) {}
   }
 
-  // ========== 语音初始化 ==========
-  function isChineseVoice(v) {
-    return v.lang.indexOf('zh') !== -1 || v.lang.indexOf('cmn') !== -1 || v.lang.indexOf('zh-CN') !== -1;
+  // ========== 填充微软语音下拉框 ==========
+  function fillEdgeSelects() {
+    var maleSel = $('edgeMaleSelect');
+    var femaleSel = $('edgeFemaleSelect');
+    maleSel.innerHTML = '';
+    femaleSel.innerHTML = '';
+    EDGE_VOICES.forEach(function(v) {
+      var opt = document.createElement('option');
+      opt.value = v.name;
+      opt.textContent = v.label;
+      if (v.gender === 'male') maleSel.appendChild(opt);
+      else femaleSel.appendChild(opt.cloneNode(true));
+    });
+    maleSel.value = edgeMaleVoice;
+    femaleSel.value = edgeFemaleVoice;
   }
 
+  // ========== 浏览器语音 ==========
+  function isZhVoice(v) { return v.lang.indexOf('zh') !== -1 || v.lang.indexOf('cmn') !== -1; }
   function guessGender(v) {
     var n = v.name.toLowerCase();
-    if (/female|woman|女|xiaoxiao|xiaoyi|yaoyao|tingting|xiaomeng|晓晓|晓伊|瑶瑶|婷婷|小萌|huihui|sinji|mei|yunxiaoxiao|xiaohan/.test(n)) return 'female';
-    if (/male|man|男|yunyang|yunxi|kangkang|yang|kai|云扬|云希|云健|kang|yunyang|kangkang/.test(n)) return 'male';
+    if (/female|woman|女|xiaoxiao|xiaoyi|tingting|晓晓|晓伊|婷婷|mei|yunxiaoxiao/.test(n)) return 'female';
+    if (/male|man|男|yunyang|yunxi|kangkang|云扬|云希|kang|yang|kai/.test(n)) return 'male';
     return 'unknown';
   }
-
-  function initVoices() {
-    allVoices = window.speechSynthesis.getVoices();
-    if (!allVoices || allVoices.length === 0) return;
-
-    var zhVoices = allVoices.filter(isChineseVoice);
-    if (zhVoices.length === 0) zhVoices = allVoices; // 兜底：用所有声音
-
-    // 填充下拉框
-    function fillSelect(selectEl, currentVoice, preferGender) {
-      selectEl.innerHTML = '';
-      zhVoices.forEach(function(v) {
+  function initBrowserVoices() {
+    allBrowserVoices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+    if (!allBrowserVoices.length) return;
+    var zh = allBrowserVoices.filter(isZhVoice);
+    if (!zh.length) zh = allBrowserVoices;
+    function fill(sel, current, preferGender) {
+      sel.innerHTML = '';
+      zh.forEach(function(v) {
         var opt = document.createElement('option');
         opt.value = v.name;
-        var gender = guessGender(v);
-        var genderTag = gender === 'female' ? ' ♀' : gender === 'male' ? ' ♂' : '';
-        opt.textContent = v.name + genderTag + ' (' + v.lang + ')';
-        selectEl.appendChild(opt);
+        var g = guessGender(v);
+        opt.textContent = v.name + (g==='female'?' ♀':g==='male'?' ♂':'') + ' (' + v.lang + ')';
+        sel.appendChild(opt);
       });
-
-      // 选中当前声音
       var found = false;
-      if (currentVoice) {
-        for (var i = 0; i < selectEl.options.length; i++) {
-          if (selectEl.options[i].value === currentVoice.name) {
-            selectEl.selectedIndex = i;
-            found = true;
-            break;
-          }
-        }
-      }
+      if (current) { for (var i=0;i<sel.options.length;i++) if(sel.options[i].value===current.name){sel.selectedIndex=i;found=true;break;} }
       if (!found) {
-        // 自动选择一个合适的默认声音
         var idx = 0;
-        if (preferGender === 'female') {
-          for (var j = 0; j < zhVoices.length; j++) {
-            if (guessGender(zhVoices[j]) === 'female') { idx = j; break; }
-          }
-        } else if (preferGender === 'male') {
-          for (var k = 0; k < zhVoices.length; k++) {
-            if (guessGender(zhVoices[k]) === 'male') { idx = k; break; }
-          }
-        }
-        selectEl.selectedIndex = idx;
-        var targetVoice = zhVoices[idx];
-        if (preferGender === 'male') selectedMaleVoice = targetVoice;
-        else selectedFemaleVoice = targetVoice;
+        for (var j=0;j<zh.length;j++) if(guessGender(zh[j])===preferGender){idx=j;break;}
+        sel.selectedIndex = idx;
+        var v = zh[idx];
+        if (preferGender==='male') browserMaleVoice = v; else browserFemaleVoice = v;
       }
     }
-
-    fillSelect($('voiceMaleSelect'), selectedMaleVoice, 'male');
-    fillSelect($('voiceFemaleSelect'), selectedFemaleVoice, 'female');
-
-    // 同步变量
-    function syncVoiceFromSelect(selectEl, isMale) {
-      var name = selectEl.value;
-      var v = allVoices.find(function(v) { return v.name === name; });
-      if (v) {
-        if (isMale) selectedMaleVoice = v;
-        else selectedFemaleVoice = v;
-      }
+    fill($('voiceMaleSelect'), browserMaleVoice, 'male');
+    fill($('voiceFemaleSelect'), browserFemaleVoice, 'female');
+    function sync(sel, isMale) {
+      var v = allBrowserVoices.find(function(v){return v.name===sel.value;});
+      if(v){ if(isMale) browserMaleVoice=v; else browserFemaleVoice=v; }
     }
-    syncVoiceFromSelect($('voiceMaleSelect'), true);
-    syncVoiceFromSelect($('voiceFemaleSelect'), false);
+    sync($('voiceMaleSelect'), true);
+    sync($('voiceFemaleSelect'), false);
   }
 
-  // ========== 试听 ==========
-  function testSpeak(text, voice, rate, pitch) {
-    if (!('speechSynthesis' in window)) return;
+  // ========== Edge TTS 合成 ==========
+  function edgeSpeak(text, voiceName, rate, pitch, onEnd, onError) {
+    if (!proxyUrl) { onError('未设置代理地址'); return; }
+    var ratePct = Math.round((rate - 1) * 100);
+    var pitchHz = Math.round((pitch - 1) * 10);
+    var baseUrl = proxyUrl.replace(/\/+$/, '');
+
+    fetch(baseUrl + '/tts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: text, voice: voiceName, rate: ratePct + '%', pitch: pitchHz + 'Hz' })
+    }).then(function(r) { return r.json(); }).then(function(data) {
+      if (data.error) { onError(data.error); return; }
+      var fileId = data.file_id;
+      var audio = new Audio(baseUrl + '/audio/' + fileId);
+      currentAudio = audio;
+      audio.onended = onEnd;
+      audio.onerror = function() { onError('音频播放失败'); };
+      audio.play().catch(function(e) { onError('播放失败: ' + e.message); });
+    }).catch(function(e) { onError('请求失败: ' + e.message); });
+  }
+
+  function edgeStop() {
+    if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+  }
+
+  // ========== Browser TTS ==========
+  function browserSpeak(text, voice, rate, pitch, onEnd, onError) {
+    if (!('speechSynthesis' in window)) { onError('浏览器不支持'); return; }
     window.speechSynthesis.cancel();
     var u = new SpeechSynthesisUtterance(text);
     u.lang = 'zh-CN';
+    u.rate = rate; u.pitch = pitch; u.volume = 1;
     if (voice) u.voice = voice;
-    u.rate = rate || speechRate;
-    u.pitch = pitch || speechPitch;
-    u.volume = 1;
+    u.onend = onEnd;
+    u.onerror = function(e) { if (e.error !== 'interrupted' && e.error !== 'canceled') onError(e.error || '语音错误'); };
     window.speechSynthesis.speak(u);
   }
-
-  // ========== 渲染市场速览 ==========
-  function renderMarket(entry) {
-    var bar = $('marketBar');
-    bar.innerHTML = entry.market.indices.map(function(idx) {
-      return '<div class="market-item">' +
-        '<div class="m-name">' + idx.name + '</div>' +
-        '<div class="m-val">' + idx.value + '</div>' +
-        '<div class="m-chg ' + (idx.direction === 'up' ? 'm-up' : 'm-down') + '">' + idx.change + '</div>' +
-      '</div>';
-    }).join('');
+  function browserStop() {
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
   }
 
-  // ========== 渲染板块 ==========
-  function renderSectors(entry) {
-    var grid = $('sectorGrid');
-    var gainers = entry.market.sectors.gainers.map(function(s) {
-      return '<div class="sector-item"><span>' + s.name + '</span><span class="sector-chg chg-up">' + s.change + '</span></div>';
-    }).join('');
-    var losers = entry.market.sectors.losers.map(function(s) {
-      return '<div class="sector-item"><span>' + s.name + '</span><span class="sector-chg chg-down">' + s.change + '</span></div>';
-    }).join('');
-    grid.innerHTML =
-      '<div class="sector-col gainers"><h4>🔴 领涨板块</h4>' + gainers + '</div>' +
-      '<div class="sector-col losers"><h4>🟢 领跌板块</h4>' + losers + '</div>';
-  }
-
-  // ========== 渲染新闻 ==========
-  function renderNews(entry) {
-    var list = $('newsList');
-    list.innerHTML = entry.news.map(function(n) {
-      var tagClass = n.category === '国内' ? 'domestic' : 'international';
-      return '<div class="news-item">' +
-        '<span class="news-tag ' + tagClass + '">' + n.category + '</span>' +
-        '<div class="news-content"><h4>' + n.title + '</h4><p>' + n.summary + '</p></div>' +
-      '</div>';
-    }).join('');
-  }
-
-  // ========== 渲染对话 ==========
-  function renderDialog(entry) {
-    $('dialogTitle').textContent = entry.title;
-    $('dialogTagline').textContent = entry.tagline;
-    var body = $('dialogBody');
-    body.innerHTML = entry.dialog.map(function(msg, idx) {
-      var name = msg.speaker === 'laoA' ? '劳A' : '小雅';
-      return '<div class="msg ' + msg.speaker + '" data-msg-idx="' + idx + '">' +
-        '<div class="avatar ' + msg.speaker + '">' + name.charAt(0) + '</div>' +
-        '<div class="bubble-wrap">' +
-          '<div class="speaker-name">' + name + '</div>' +
-          '<div class="bubble">' + msg.text + '</div>' +
-        '</div>' +
-      '</div>';
-    }).join('');
-    body.scrollTop = 0;
-  }
-
-  // ========== 高亮当前播放消息 ==========
-  function highlightMsg(idx) {
-    var msgs = $('dialogBody').querySelectorAll('.msg');
-    msgs.forEach(function(m, i) {
-      if (i === idx) {
-        m.classList.add('speaking');
-        m.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } else {
-        m.classList.remove('speaking');
-      }
-    });
-  }
-
-  // ========== 渲染头部信息 ==========
-  function renderHeader(entry) {
-    $('epDate').textContent = entry.date;
-    $('epWeekday').textContent = entry.weekday;
-    $('epNum').textContent = '第 ' + entry.episode + ' 期';
-  }
-
-  // ========== 渲染选集列表 ==========
-  function renderArchive() {
-    var list = $('archiveList');
-    list.innerHTML = ENTRIES.map(function(e, i) {
-      var cls = i === currentIdx ? 'active' : '';
-      return '<button class="archive-chip ' + cls + '" data-idx="' + i + '">' +
-        e.date + ' 第' + e.episode + '期</button>';
-    }).join('');
-    list.querySelectorAll('.archive-chip').forEach(function(chip) {
-      chip.addEventListener('click', function() {
-        switchEntry(parseInt(this.getAttribute('data-idx')));
-      });
-    });
-  }
-
-  // ========== 切换期数 ==========
-  function switchEntry(idx) {
-    currentIdx = idx;
-    var entry = ENTRIES[idx];
-    renderHeader(entry);
-    renderMarket(entry);
-    renderSectors(entry);
-    renderNews(entry);
-    renderDialog(entry);
-    renderArchive();
-    stopPlay();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  // ========== 语音朗读单条 ==========
+  // ========== 统一播放接口 ==========
   function speakMsg(msgIdx) {
     var entry = ENTRIES[currentIdx];
     var msgs = entry.dialog;
-
     if (msgIdx >= msgs.length) {
-      isPlaying = false;
-      isPaused = false;
+      isPlaying = false; isPaused = false;
       $('playBtn').innerHTML = '🔄';
       $('playStatus').textContent = '播放完毕，点击重播';
       $('progressFill').style.width = '100%';
-      document.querySelectorAll('.msg.speaking').forEach(function(m) { m.classList.remove('speaking'); });
+      document.querySelectorAll('.msg.speaking').forEach(function(m){m.classList.remove('speaking');});
       return;
     }
-
     playMsgIdx = msgIdx;
     var msg = msgs[msgIdx];
-    var text = msg.text;
-
     renderDialog(entry);
     highlightMsg(msgIdx);
     $('progressFill').style.width = ((msgIdx / msgs.length) * 100) + '%';
-    $('playStatus').textContent = '播放中 ' + (msgIdx + 1) + '/' + msgs.length;
+    $('playStatus').textContent = '播放中 ' + (msgIdx+1) + '/' + msgs.length + (ttsEngine==='edge' && !proxyUrl ? ' (需设置代理)' : '');
 
-    if (!('speechSynthesis' in window)) {
-      $('playStatus').textContent = '浏览器不支持语音 ' + (msgIdx + 1) + '/' + msgs.length;
-      setTimeout(function() { speakMsg(msgIdx + 1); }, 2000 + text.length * 80);
-      return;
+    var voice, rate, pitch;
+    if (msg.speaker === 'laoA') {
+      voice = ttsEngine === 'edge' ? edgeMaleVoice : browserMaleVoice;
+      rate = speechRate; pitch = speechPitch * 0.9;
+    } else {
+      voice = ttsEngine === 'edge' ? edgeFemaleVoice : browserFemaleVoice;
+      rate = speechRate; pitch = speechPitch * 1.1;
+    }
+    pitch = Math.max(0.5, Math.min(2, pitch));
+
+    function onEnd() {
+      if (isPlaying && !isPaused) setTimeout(function(){ speakMsg(msgIdx+1); }, 350);
+    }
+    function onError(err) {
+      $('playStatus').textContent = '语音错误: ' + err + '，跳过...';
+      if (isPlaying && !isPaused) setTimeout(function(){ speakMsg(msgIdx+1); }, 1500);
     }
 
-    var utter = new SpeechSynthesisUtterance(text);
-    utter.lang = 'zh-CN';
-    utter.rate = speechRate;
-    // 男声音调稍低，女声音调稍高，在用户设置基础上调整
-    var basePitch = msg.speaker === 'laoA' ? speechPitch * 0.9 : speechPitch * 1.1;
-    utter.pitch = Math.max(0.5, Math.min(2, basePitch));
-    utter.volume = 1;
-
-    if (msg.speaker === 'laoA' && selectedMaleVoice) {
-      utter.voice = selectedMaleVoice;
-    } else if (msg.speaker === 'xiaoYa' && selectedFemaleVoice) {
-      utter.voice = selectedFemaleVoice;
+    if (ttsEngine === 'edge') {
+      edgeSpeak(msg.text, voice, rate, pitch, onEnd, onError);
+    } else {
+      browserSpeak(msg.text, voice, rate, pitch, onEnd, onError);
     }
-
-    utter.onend = function() {
-      if (isPlaying && !isPaused) {
-        setTimeout(function() { speakMsg(msgIdx + 1); }, 350);
-      }
-    };
-    utter.onerror = function() {
-      if (isPlaying && !isPaused) {
-        setTimeout(function() { speakMsg(msgIdx + 1); }, 350);
-      }
-    };
-
-    window.speechSynthesis.speak(utter);
   }
 
-  // ========== 播放控制 ==========
   function startPlay() {
-    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-    isPlaying = true;
-    isPaused = false;
+    edgeStop(); browserStop();
+    isPlaying = true; isPaused = false;
     $('playBtn').innerHTML = '⏸';
-    var entry = ENTRIES[currentIdx];
-    renderDialog(entry);
+    renderDialog(ENTRIES[currentIdx]);
     speakMsg(0);
   }
-
   function pausePlay() {
     isPaused = true;
-    window.speechSynthesis.pause();
+    if (ttsEngine === 'edge') { if(currentAudio) currentAudio.pause(); }
+    else { window.speechSynthesis.pause(); }
     $('playBtn').innerHTML = '▶';
     $('playStatus').textContent = '已暂停';
   }
-
   function resumePlay() {
     isPaused = false;
-    window.speechSynthesis.resume();
+    if (ttsEngine === 'edge') { if(currentAudio) currentAudio.play(); }
+    else { window.speechSynthesis.resume(); }
     $('playBtn').innerHTML = '⏸';
     $('playStatus').textContent = '播放中...';
   }
-
   function stopPlay() {
-    isPlaying = false;
-    isPaused = false;
-    playMsgIdx = 0;
-    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    isPlaying = false; isPaused = false; playMsgIdx = 0;
+    edgeStop(); browserStop();
     $('playBtn').innerHTML = '▶';
     $('progressFill').style.width = '0%';
     $('playStatus').textContent = '点击播放语音播报';
-    document.querySelectorAll('.msg.speaking').forEach(function(m) { m.classList.remove('speaking'); });
+    document.querySelectorAll('.msg.speaking').forEach(function(m){m.classList.remove('speaking');});
+  }
+
+  // ========== 渲染 ==========
+  function renderMarket(e) {
+    $('marketBar').innerHTML = e.market.indices.map(function(i){
+      return '<div class="market-item"><div class="m-name">'+i.name+'</div><div class="m-val">'+i.value+'</div><div class="m-chg '+(i.direction==='up'?'m-up':'m-down')+'">'+i.change+'</div></div>';
+    }).join('');
+  }
+  function renderSectors(e) {
+    var g=e.market.sectors.gainers.map(function(s){return '<div class="sector-item"><span>'+s.name+'</span><span class="sector-chg chg-up">'+s.change+'</span></div>';}).join('');
+    var l=e.market.sectors.losers.map(function(s){return '<div class="sector-item"><span>'+s.name+'</span><span class="sector-chg chg-down">'+s.change+'</span></div>';}).join('');
+    $('sectorGrid').innerHTML = '<div class="sector-col gainers"><h4>🔴 领涨板块</h4>'+g+'</div><div class="sector-col losers"><h4>🟢 领跌板块</h4>'+l+'</div>';
+  }
+  function renderNews(e) {
+    $('newsList').innerHTML = e.news.map(function(n){
+      return '<div class="news-item"><span class="news-tag '+(n.category==='国内'?'domestic':'international')+'">'+n.category+'</span><div class="news-content"><h4>'+n.title+'</h4><p>'+n.summary+'</p></div></div>';
+    }).join('');
+  }
+  function renderDialog(e) {
+    $('dialogTitle').textContent = e.title;
+    $('dialogTagline').textContent = e.tagline;
+    $('dialogBody').innerHTML = e.dialog.map(function(msg, idx){
+      var name = msg.speaker==='laoA'?'劳A':'小雅';
+      return '<div class="msg '+msg.speaker+'" data-idx="'+idx+'"><div class="avatar '+msg.speaker+'">'+name.charAt(0)+'</div><div class="bubble-wrap"><div class="speaker-name">'+name+'</div><div class="bubble">'+msg.text+'</div></div></div>';
+    }).join('');
+    $('dialogBody').scrollTop = 0;
+  }
+  function highlightMsg(idx) {
+    var msgs = $('dialogBody').querySelectorAll('.msg');
+    msgs.forEach(function(m, i){
+      if (i===idx) { m.classList.add('speaking'); m.scrollIntoView({behavior:'smooth', block:'center'}); }
+      else m.classList.remove('speaking');
+    });
+  }
+  function renderHeader(e) {
+    $('epDate').textContent = e.date;
+    $('epWeekday').textContent = e.weekday;
+    $('epNum').textContent = '第 ' + e.episode + ' 期';
+  }
+  function renderArchive() {
+    var list = $('archiveList');
+    list.innerHTML = ENTRIES.map(function(e, i){
+      return '<button class="archive-chip '+(i===currentIdx?'active':'')+'" data-idx="'+i+'">'+e.date+' 第'+e.episode+'期</button>';
+    }).join('');
+    list.querySelectorAll('.archive-chip').forEach(function(c){
+      c.addEventListener('click', function(){ switchEntry(parseInt(this.getAttribute('data-idx'))); });
+    });
+  }
+  function switchEntry(idx) {
+    currentIdx = idx;
+    var e = ENTRIES[idx];
+    renderHeader(e); renderMarket(e); renderSectors(e); renderNews(e); renderDialog(e); renderArchive();
+    stopPlay();
+    window.scrollTo({top:0, behavior:'smooth'});
   }
 
   // ========== 事件绑定 ==========
-  $('playBtn').addEventListener('click', function() {
+  $('playBtn').addEventListener('click', function(){
     if (isPlaying && !isPaused) pausePlay();
     else if (isPlaying && isPaused) resumePlay();
     else startPlay();
   });
 
-  // 设置面板开关
-  $('settingsBtn').addEventListener('click', function() {
-    var panel = $('voiceSettings');
-    var btn = $('settingsBtn');
-    panel.classList.toggle('open');
-    btn.classList.toggle('active');
+  $('settingsBtn').addEventListener('click', function(){
+    $('voiceSettings').classList.toggle('open');
+    $('settingsBtn').classList.toggle('active');
   });
 
-  // 声音选择
-  $('voiceMaleSelect').addEventListener('change', function() {
-    var v = allVoices.find(function(v) { return v.name === this.value; }.bind(this));
-    if (v) { selectedMaleVoice = v; saveSettings(); }
-  });
-  $('voiceFemaleSelect').addEventListener('change', function() {
-    var v = allVoices.find(function(v) { return v.name === this.value; }.bind(this));
-    if (v) { selectedFemaleVoice = v; saveSettings(); }
-  });
-
-  // 试听按钮
-  $('testMaleBtn').addEventListener('click', function(e) {
-    e.stopPropagation();
-    var name = $('voiceMaleSelect').value;
-    var v = allVoices.find(function(v) { return v.name === name; });
-    testSpeak('大家好，我是劳A，今天为您解读A股市场。', v, speechRate, speechPitch * 0.9);
-  });
-  $('testFemaleBtn').addEventListener('click', function(e) {
-    e.stopPropagation();
-    var name = $('voiceFemaleSelect').value;
-    var v = allVoices.find(function(v) { return v.name === name; });
-    testSpeak('各位投资者早上好，欢迎收听豆浆油条，我是小雅。', v, speechRate, speechPitch * 1.1);
-  });
-
-  // 语速滑块
-  var rateSlider = $('rateSlider');
-  var rateVal = $('rateVal');
-  rateSlider.addEventListener('input', function() {
-    speechRate = parseFloat(this.value);
-    rateVal.textContent = speechRate.toFixed(2) + 'x';
+  // 引擎切换
+  function switchEngine(engine) {
+    ttsEngine = engine;
     saveSettings();
+    $('tabEdge').classList.toggle('active', engine==='edge');
+    $('tabBrowser').classList.toggle('active', engine==='browser');
+    $('edgePanel').style.display = engine==='edge' ? 'block' : 'none';
+    $('browserPanel').style.display = engine==='browser' ? 'block' : 'none';
+    stopPlay();
+  }
+  $('tabEdge').addEventListener('click', function(){ switchEngine('edge'); });
+  $('tabBrowser').addEventListener('click', function(){ switchEngine('browser'); });
+
+  // 代理URL
+  $('proxyUrl').addEventListener('change', function(){ proxyUrl = this.value.trim(); saveSettings(); });
+
+  // 微软语音选择
+  $('edgeMaleSelect').addEventListener('change', function(){ edgeMaleVoice = this.value; saveSettings(); });
+  $('edgeFemaleSelect').addEventListener('change', function(){ edgeFemaleVoice = this.value; saveSettings(); });
+
+  // 浏览器语音选择
+  $('voiceMaleSelect').addEventListener('change', function(){
+    var v = allBrowserVoices.find(function(v){return v.name===this.value;}.bind(this));
+    if(v){browserMaleVoice=v; saveSettings();}
+  });
+  $('voiceFemaleSelect').addEventListener('change', function(){
+    var v = allBrowserVoices.find(function(v){return v.name===this.value;}.bind(this));
+    if(v){browserFemaleVoice=v; saveSettings();}
   });
 
-  // 音调滑块
-  var pitchSlider = $('pitchSlider');
-  var pitchVal = $('pitchVal');
-  pitchSlider.addEventListener('input', function() {
-    speechPitch = parseFloat(this.value);
-    pitchVal.textContent = speechPitch.toFixed(1);
-    saveSettings();
+  // 试听
+  function testEdgeSpeak(text, voice, btnId) {
+    var btn = $(btnId);
+    if (!proxyUrl) { alert('请先填写TTS代理地址'); $('proxyUrl').focus(); return; }
+    btn.disabled = true; btn.textContent = '生成中...';
+    edgeStop();
+    edgeSpeak(text, voice, speechRate, voice.indexOf('Yun')!==-1 ? speechPitch*0.9 : speechPitch*1.1,
+      function(){ btn.disabled=false; btn.textContent='试听'; },
+      function(err){ btn.disabled=false; btn.textContent='试听'; alert('试听失败: '+err); }
+    );
+  }
+  $('testEdgeMaleBtn').addEventListener('click', function(e){
+    e.stopPropagation();
+    testEdgeSpeak('大家好，我是劳A，今天为您解读A股市场。', $('edgeMaleSelect').value, 'testEdgeMaleBtn');
+  });
+  $('testEdgeFemaleBtn').addEventListener('click', function(e){
+    e.stopPropagation();
+    testEdgeSpeak('各位投资者早上好，欢迎收听豆浆油条，我是小雅。', $('edgeFemaleSelect').value, 'testEdgeFemaleBtn');
+  });
+  $('testMaleBtn').addEventListener('click', function(e){
+    e.stopPropagation();
+    if(!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance('大家好，我是劳A，今天为您解读A股市场。');
+    u.lang='zh-CN'; u.rate=speechRate; u.pitch=speechPitch*0.9;
+    if(browserMaleVoice) u.voice=browserMaleVoice;
+    window.speechSynthesis.speak(u);
+  });
+  $('testFemaleBtn').addEventListener('click', function(e){
+    e.stopPropagation();
+    if(!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance('各位投资者早上好，欢迎收听豆浆油条，我是小雅。');
+    u.lang='zh-CN'; u.rate=speechRate; u.pitch=speechPitch*1.1;
+    if(browserFemaleVoice) u.voice=browserFemaleVoice;
+    window.speechSynthesis.speak(u);
   });
 
-  // 页面关闭停止语音
-  window.addEventListener('beforeunload', function() {
-    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-  });
+  // 滑块
+  var rateSlider = $('rateSlider'), rateVal = $('rateVal');
+  rateSlider.addEventListener('input', function(){ speechRate=parseFloat(this.value); rateVal.textContent=speechRate.toFixed(2)+'x'; saveSettings(); });
+  var pitchSlider = $('pitchSlider'), pitchVal = $('pitchVal');
+  pitchSlider.addEventListener('input', function(){ speechPitch=parseFloat(this.value); pitchVal.textContent=speechPitch.toFixed(1); saveSettings(); });
+
+  window.addEventListener('beforeunload', function(){ edgeStop(); browserStop(); });
 
   // ========== 初始化 ==========
   loadSettings();
-  rateSlider.value = speechRate;
-  rateVal.textContent = speechRate.toFixed(2) + 'x';
-  pitchSlider.value = speechPitch;
-  pitchVal.textContent = speechPitch.toFixed(1);
-
+  fillEdgeSelects();
+  rateSlider.value = speechRate; rateVal.textContent = speechRate.toFixed(2)+'x';
+  pitchSlider.value = speechPitch; pitchVal.textContent = speechPitch.toFixed(1);
+  $('proxyUrl').value = proxyUrl;
+  switchEngine(ttsEngine);
   if ('speechSynthesis' in window) {
-    initVoices();
-    window.speechSynthesis.onvoiceschanged = function() {
-      initVoices();
-    };
-  } else {
-    $('playStatus').textContent = '浏览器不支持语音';
+    initBrowserVoices();
+    window.speechSynthesis.onvoiceschanged = initBrowserVoices;
   }
-
-  if (ENTRIES.length > 0) {
-    switchEntry(ENTRIES.length - 1);
-  }
+  if (ENTRIES.length > 0) switchEntry(ENTRIES.length - 1);
 })();
 </script>
 
